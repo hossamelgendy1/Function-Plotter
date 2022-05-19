@@ -55,6 +55,7 @@ def plot(min, max, exp, f):
     plt.axvline(color = 'black')
     plt.show()
 
+'''
 try:
     min = float(input('Enter the minimum value of x: '))
     max = float(input('Enter the maximum value of x: '))
@@ -65,4 +66,4 @@ try:
 except ValueError as e:
     print(e)
     exit()
-
+'''
