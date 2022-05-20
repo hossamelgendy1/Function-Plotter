@@ -43,7 +43,7 @@ def validate_expression(s):
 def f(x, exp):
     return eval(exp)
 
-def plot(min, max, exp, f):
+def plot(min, max, exp):
     points = np.arange(min, max+0.1, 0.1) #to take the endpoint(max) inclusive
     plt.plot(points, f(points, exp))
 
