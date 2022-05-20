@@ -44,6 +44,10 @@ def f(x, exp):
     return eval(exp)
 
 def plot(min, max, exp):
+    #validate the expression
+    exp = validate_expression(exp)
+
+    #generate the x values to plot the function
     points = np.arange(min, max+0.1, 0.1) #to take the endpoint(max) inclusive
     plt.plot(points, f(points, exp))
 
@@ -54,16 +58,3 @@ def plot(min, max, exp):
     plt.axhline(color = 'black')
     plt.axvline(color = 'black')
     plt.show()
-
-'''
-try:
-    min = float(input('Enter the minimum value of x: '))
-    max = float(input('Enter the maximum value of x: '))
-    if min > max:
-        raise ValueError('ERROR: minimum value is greater than the maximum value!')
-    exp = validate_expression(input('Enter the function: '))
-    plot(min, max, exp, f)
-except ValueError as e:
-    print(e)
-    exit()
-'''
