@@ -34,7 +34,7 @@ def validate_expression(s):
         elif c == ' ':
             continue
         else:
-            raise ValueError('ERROR: Invalid symbol exists!')
+            raise ValueError(f'ERROR: Invalid symbol exists! \'{c}\'')
 
     if expect_operand: #second operand is missing
         raise ValueError('ERROR: last operator without a second operand!')

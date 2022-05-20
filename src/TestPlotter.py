@@ -15,7 +15,7 @@ class TestPlotter(unittest.TestCase):
 
         with self.assertRaises(ValueError) as exception2:
             plotter.validate_expression('y + 3')
-        self.assertEqual(exception2.exception.args[0], 'ERROR: Invalid symbol exists!')
+        self.assertEqual(exception2.exception.args[0], 'ERROR: Invalid symbol exists! \'y\'')
 
         with self.assertRaises(ValueError) as exception3:
             plotter.validate_expression('x^2 + 3 * xx')
@@ -51,15 +51,15 @@ class TestPlotter(unittest.TestCase):
 
         with self.assertRaises(ValueError) as exception11:
             plotter.validate_expression('x % 2')
-        self.assertEqual(exception11.exception.args[0], 'ERROR: Invalid symbol exists!')
-
-        with self.assertRaises(ValueError) as exception11:
-            plotter.validate_expression('X + 2')
-        self.assertEqual(exception11.exception.args[0], 'ERROR: Invalid symbol exists!')
+        self.assertEqual(exception11.exception.args[0], 'ERROR: Invalid symbol exists! \'%\'')
 
         with self.assertRaises(ValueError) as exception12:
+            plotter.validate_expression('X + 2')
+        self.assertEqual(exception12.exception.args[0], 'ERROR: Invalid symbol exists! \'X\'')
+
+        with self.assertRaises(ValueError) as exception13:
             plotter.validate_expression('(x ^ 2) + (3 * x')
-        self.assertEqual(exception12.exception.args[0], 'ERROR: There is an opening bracket without a closing one!')
+        self.assertEqual(exception13.exception.args[0], 'ERROR: There is an opening bracket without a closing one!')
 
 
 if __name__ == '__main__':
