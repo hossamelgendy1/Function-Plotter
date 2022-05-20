@@ -18,6 +18,9 @@ def validate_expression(s):
             raise ValueError('ERROR: there is a space inside a number!')
         elif not expect_operand and c in operators:
             expect_operand = True
+        #if we expect an operand and we find '-', it's a negative sign not a minus operator
+        elif expect_operand and c == '-':
+            continue
         elif expect_operand and c in operators: #first operand is missing or two consecutive operators
             raise ValueError('ERROR: there exists an operator without a first operand!')
         elif c == '(' and expect_operand:
@@ -32,8 +35,10 @@ def validate_expression(s):
             continue
         else:
             raise ValueError('ERROR: Invalid symbol exists!')
+
     if expect_operand: #second operand is missing
         raise ValueError('ERROR: last operator without a second operand!')
+
     if opened_brackets > 0: #there is an opening bracket without a closing one
         raise ValueError('ERROR: There is an opening bracket without a closing one!')
 
